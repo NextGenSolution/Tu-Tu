@@ -1,0 +1,56 @@
+<div *ngFor="let r of result">
+<div class="row">
+  <div class="col-sm-4">  
+    <div class="form-group">
+      <label for="inputFirstName">Name</label>
+      <input #txtFirstName type="text" class="form-control" style="width:350px" value="{{r.name}}">
+    </div>
+  </div>
+
+<!--
+  <div class="col-sm-6">  
+    <div class="form-group">
+      <label for="inputLastName">Last Name</label>
+      <input #txtLastName type="text" class="form-control" style="width:208px" value="{{r.lname}}">
+    </div> 
+</div>
+-->
+
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+     <div class="form-group" >
+    <label for="lblInputEmail1">Email address</label>
+    <input  #txtEmail type="email" class="form-control" id="txtEmail1" (keyup)="onKey(txtEmail.value)" style="width:350px" value="{{r.email}}" placeholder="email">
+  </div>
+<div *ngIf=validateEmail>
+ <p style="color:black"><span class="glyphicon glyphicon-warning-sign"></span>Invalid Email...</p>
+ <br/>
+</div>
+  </div>
+</div>
+
+<div class="row"> 
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputAdmin">Admin</label>
+      <input #txtAdmin type="text" class="form-control" style="width:350px" value="{{r.adminName}}" disabled>
+    </div>
+  </div>
+
+</div>
+
+<div class="row"> 
+ <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputWebsite">Company Name</label>
+      <input #txtCompany type="text" class="form-control" style="width:350px" value="{{r.companyName}}" disabled>
+    </div>
+  </div>
+</div>
+
+<div align="right">
+<button type="button" (click)="updateUser(txtFirstName.value,txtEmail.value,txtAdmin.value,txtCompany.value)" [disabled]=validateEmail class="btn btn-primary">Edit</button>
+</div>
+</div>

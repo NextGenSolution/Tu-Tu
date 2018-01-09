@@ -1,0 +1,30 @@
+<div class="chat-window-container">
+    <div class="chat-window">
+        <div class="panel-container">
+            <div class="panel panel-default">
+                <div class="panel-heading top-bar" style="backgroun">
+                    <div class="panel-title-container">
+                        <h3 class="panel-title">
+                        <span class="glyphicon glyphicon-comment"></span>
+                        Chat - {{room.name}}
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body msg-container-base" #scroll>
+                <div class="message" *ngFor="let item of messages | orderBy:'created':false">
+                    <span class="dimmed">{{item.created}}</span>
+                    &lt;{{item.from}}&gt;
+                    {{item.message}}
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="input-group">
+                <input #focus class="chat-input" [(ngModel)]="message" (keypress)="eventHandler($event)">
+                <button class="leaves btn btn-danger" (click)="send()">Send</button>
+                <button class="leave btn btn-danger" (click)="leave(room)">Leave</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

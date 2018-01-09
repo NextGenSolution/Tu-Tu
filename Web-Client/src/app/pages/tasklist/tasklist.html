@@ -1,0 +1,30 @@
+<div id="myListHeading">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-5"></div>
+    <div class="col-sm-3">
+        <div class="input-group">
+            <input id="search" type="text" class="form-control with-danger-addon" placeholder="Search for tasks...">
+        </div>
+    </div>
+</div>
+<div class="taskListingSpacing"></div>
+<div class="taskListing">
+    <div *ngIf="pending">
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
+        Checking..
+    </div>
+    <div class="col-sm-9 task-item" *ngFor="let item of taskArray;let sCount=index">
+        <div class="col-sm-3 myTask"><img src="http://lorempixel.com/60/60/people?{{sCount}}" class="taskIcon"/></div>
+        <div class="col-sm-3 myTask tasktitle titleLeft">{{item.title}}</div>
+        <div class="col-sm-3 myTask tasktitle" (click)="showLink(item,sCount)">{{item.status}}
+            <div id="attchmentDiv" *ngIf="isClicked && sCount == count">
+                <a href="{{item.attachemts}}" target="_blank">Find your attchment here</a>
+            </div>
+        </div>
+        <div class="col-sm-3 myTask">
+            <rating [(ngModel)]="taskArray[sCount].starCount" max="{{_max1}}" stateOn="ion-android-star" 
+            stateOff="ion-android-star-outline"class="rating" (click)="updateRate(item.actId,item.starCount,item.status,sCount)">
+            </rating>
+        </div>
+    </div>
+</div>

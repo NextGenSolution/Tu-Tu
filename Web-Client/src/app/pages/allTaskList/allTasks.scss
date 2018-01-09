@@ -1,0 +1,64 @@
+.myTask{
+    align-content: center;
+    text-align: center;
+    padding: 15px;
+}
+
+.taskListingSpacing{
+    height: 30px;
+}
+
+.taskIcon{
+    border-radius: 50%;
+}
+.taskListing{
+    position: absolute;
+    left: 16px;
+    bottom: -40px;
+    right: 389px;
+    top: 189px;
+    /* padding: 29px; */
+    /* margin-left: -5px; */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+//making taskk title clickable
+.tasktitle{
+    cursor: pointer;
+}
+
+.titleLeft{
+    text-align: left;
+}
+
+#attchmentDiv{
+    padding: 5px;
+    color: beige;
+}
+
+#search{
+    border-radius: 5px;
+}
+
+/* Let's get this party started */
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgb(128,128,128); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgb(128,128,128); 
+}

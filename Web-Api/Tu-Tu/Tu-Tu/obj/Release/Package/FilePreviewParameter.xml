@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="SP-Client" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\SLIIT\\Added2\ MErge\\AddedChat\\sep-tutu\\Web-Api\\Tu-Tu\\Tu-Tu\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^D:\\SLIIT\\Added2\ MErge\\AddedChat\\sep-tutu\\Web-Api\\Tu-Tu\\Tu-Tu\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="AuthCon-Web.config Connection String" description="" value="Data Source=localhost;Initial Catalog=Tu_Tu_DB;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="D:\\SLIIT\\Added2\ MErge\\AddedChat\\sep-tutu\\Web-Api\\Tu-Tu\\Tu-Tu\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='AuthCon']/@connectionString" />
+  </parameter>
+</parameters>

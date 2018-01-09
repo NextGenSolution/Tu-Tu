@@ -1,0 +1,83 @@
+        <head>
+            <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+        </head>
+        <div class="taskMain">
+            <div class="col-sm-8" id="fromDev">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Title</label>
+                        <input type="text" [(ngModel)]="varTitle" name="varTitle" class="form-control" id="exampleInputEmail1" placeholder="Task title">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Description</label>
+                        <textarea class="form-control" [(ngModel)]="description" name="description" placeholder="Description about the task"></textarea>
+                    </div>
+                  
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {{selectedItem}}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li class='listItem' *ngFor='let item of categoryList' (click)="onListClick(item)">
+                                    {{item}}
+                                </li>
+                            </ul>
+                               
+                                <!--<i class="addCat"
+                                class="add-item-icon ion-plus-round"
+                                (click)="addedNew()" ></i>-->
+                        </div>
+                    </div>  
+                        <!-- end of newly added -->
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Expiry Date</label>
+                        <my-date-picker id="dtp" [options]="myDatePickerOptions"
+                    (dateChanged)="onDateChanged($event)"></my-date-picker>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Assignee</label><br>
+                        <div dnd-droppable class="panel panel-info dropZone" [dropZones]="['zone1']"
+                            (onDropSuccess)="transferDataSuccess($event)">
+                              <div class="panel-heading"></div>
+                                <div class="panel-body">
+                                    <div [hidden]="!receivedData.length >0 " *ngFor="#data of receivedData" id="assignee"
+                                        [(ngModel)]="assignee" name="assignee">
+                                            {{data}}
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                    <br>
+
+                    <!-- file upload-->
+
+                    <button type="submit" (click)="saveTask()" class="btn btn-danger">Submit</button>
+                </form>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3" id="rightBar">
+                <div class="activityList"><a href="http://localhost:3000/#/pages/tasklist" style="color:#4dc4ff">Click here to view all your tasks</a></div>   
+                <div class="input-group">
+                    <input type="text" id="search" class="form-control with-danger-addon" placeholder="Search for Assignees...">
+                    <!--<span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">Go!</button>
+                    </span>-->
+                </div>
+
+                <div class="panel panel-primary">
+                    <div class="panel-body">
+                        <div *ngIf="pending">
+                            <i class="fa fa-spinner fa-spin fa-2x"></i>
+                            Checking..
+                         </div>
+                        <div class="panel panel-default" dnd-draggable [dragEnabled]="true"
+                            [dropZones]="['zone1']" *ngFor="#empTile of users;let sCount=index" [dragData]="empTile">
+                                <empTile [data]="empTile" [size]="sCount"></empTile>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

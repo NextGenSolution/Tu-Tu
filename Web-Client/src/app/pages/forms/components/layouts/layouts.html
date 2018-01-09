@@ -1,0 +1,98 @@
+<div class="widgets">
+ <div class="row">
+   <!-- 
+     -->
+     <div class="col-sm-3"></div> 
+    <div class="col-sm-4" align="center" style="width:450px">
+      <ba-card title="Edit Profile Picture" baCardClass="with-scroll">
+
+<div class="picture-group">
+  <div class="picture-wrapper" (click)="bringFileSelector();">
+    <img src="{{ picture }}" *ngIf="picture">
+    <img src="{{ defaultPicture }}" *ngIf="!picture && defaultPicture">
+
+    <div class="loading" *ngIf="uploadInProgress">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
+  </div>
+  <i class="ion-ios-close-outline" (click)="removePicture();" *ngIf="picture && canDelete"></i>
+  <a href class="change-picture" (click)="bringFileSelector();">Change profile Picture</a>
+  <input #fileUpload type="file" id="uploadFile" value="" (change)="onFiles()" hidden>
+</div>
+<br/><br/>
+   <textarea id="base64textarea" style="color:black" cols="50" rows="15" hidden></textarea>
+    <br/>
+      <button type="submit" (click)="clickUpdatePic()" class="btn btn-primary">Save Picture</button>
+      <br/>
+   <br/>
+      </ba-card>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-2"></div> 
+    <div class="col-md-9">
+	    <div style="width:620px">
+        <ba-card title="Basic Details" baCardClass="with-scroll">
+         <div class="row">
+             <div class="col-sm-2"></div>
+             <div class="col-sm-8">
+                <block-form></block-form>
+            </div>
+         </div>
+       </ba-card>
+   </div>
+</div>
+ </div>
+
+
+<div class="row">
+      <div class="col-sm-2"></div> 
+    <div class="col-md-6" style="width:650px">    
+        <ba-card title="Security - Change Password" baCardClass="with-scroll">
+
+           <div class="row">
+             <div class="col-sm-2"></div>
+             <div class="col-sm-8">
+                <basic-form></basic-form> 
+             </div>
+           </div>
+        </ba-card>
+       </div> 
+    </div> 
+   
+   <div class="col-lg-6" style="width:1000px">
+     <div class="row">
+         <div class="col-sm-2"></div>
+             <div class="col-sm-8">
+      <ba-card title="Tasks Ratings Details" baCardClass="with-scroll table-panel">
+        <responsive-table></responsive-table>
+      </ba-card>
+             </div>
+     </div>
+    </div>
+
+<div class="row">
+      <div class="col-sm-6" style="width:1000px">
+        <div>
+          <div class="row">
+             <div class="col-sm-2"></div>
+             <div class="col-sm-8">
+                 <ba-card title="User Badges" baCardClass="with-scroll table-panel">
+                   <hover-table></hover-table>
+               </ba-card>
+             </div>
+           </div>    
+      </div>	 
+    </div>
+  </div>
+
+
+ 	 	
+ 
+  
+ 
+</div>

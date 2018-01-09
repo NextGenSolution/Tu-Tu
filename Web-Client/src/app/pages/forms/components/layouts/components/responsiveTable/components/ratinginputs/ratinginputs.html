@@ -1,0 +1,6 @@
+<div *ngFor="let r of result">
+<div class="col-md-12" style="pointer-events:none" contenteditable="false">
+  <rating contenteditable="false" [(ngModel)]="startCount" max="{{_max1}}" readonly="true" stateOn="ion-android-star" stateOff="ion-android-star-outline" class="rating"></rating>
+  <span class="help-block">Rate: {{r.starCount}}</span>
+</div>
+</div>

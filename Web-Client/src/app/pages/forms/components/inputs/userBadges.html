@@ -1,0 +1,134 @@
+<div class="row">
+    <div class="col-sm-1">
+    </div>
+     <div class="col-sm-6">
+         <div class="row">
+             <div class="col-sm-3">
+                <h3 style="color:darkblue">Select User</h3>
+             </div>
+             
+             <div class="col-sm-1">
+                <select #selectedValue style="color:black;width:200px" (change)="clickUsersDropDwn($event.target.value)">
+                    <option *ngFor="#user of users" style="color:black" value="{{user.id}}">
+                     {{user.name}}                    
+                    </option>
+                </select>
+            </div>
+
+         </div>
+     </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-sm-4"  align="center">
+      <ba-card title="Best Quality" baCardClass="with-scroll">
+         <div class="thumbnail">  
+             <img src="assets/img/app/badges/qualityBest.png" alt="Lights" style="width:60%;pointer-events:none">
+             <div class="caption">
+                <br/>
+                <h6>Badge Count {{bestQualityCount}}</h6>
+                 <div>
+                    <button type="submit" (click)="clickRewardBadge(selectedValue.value,bestQualityCount,'Best Quality')" class="btn btn-primary">Reward Badge</button>
+                    <div style="width:6px;height:auto;display:inline-block;"></div>
+                 
+                </div>
+             </div>
+         </div>
+
+  </ba-card>
+
+    </div>
+    
+   <div class="col-sm-4"  align="center">
+  <ba-card title="Good Quality" baCardClass="with-scroll" >    
+         <div class="thumbnail">   
+        <img src="assets/img/app/badges/highQuality.png" alt="Lights"  style="width:60%">
+        <div class="caption">
+                <br/>
+                <h6>Badge Count {{goodQualityCount}}</h6>
+                 <div>
+                    <button type="submit"(click)="clickRewardBadge(selectedValue.value,goodQualityCount,'Good Quality')" class="btn btn-primary">Reward Badge</button>
+                    <div style="width:6px;height:auto;display:inline-block;"></div>
+                 
+                </div>
+             </div>
+    </div> 
+
+      </ba-card>
+
+    </div>
+
+   <div class="col-sm-4"  align="center">
+  <ba-card title="Excelent Work" baCardClass="with-scroll">   
+      
+      <div class="thumbnail">
+   
+        <img src="assets/img/app/badges/excellent.png" alt="Lights"  style="width:60%">
+         <div class="caption">
+                <br/>
+                <h6>Badge Count {{excellentCount}}</h6>
+                 <div>
+                    <button type="submit" (click)="clickRewardBadge(selectedValue.value,excellentCount,'Excellent')" class="btn btn-primary">Reward Badge</button>
+                    <div style="width:6px;height:auto;display:inline-block;"></div>
+                 
+                </div>
+             </div>
+    </div>
+       
+      </ba-card>
+
+    </div>  
+  </div>
+
+
+<br/>
+
+<div class="row">
+
+<div class="col-sm-2">
+</div>
+
+    <div class="col-sm-4"  align="center">
+      <ba-card title="Good Job" baCardClass="with-scroll">
+           <div class="thumbnail">
+        <img src="assets/img/app/badges/goodJob.png" alt="Lights" style="width:36%">
+        <div class="caption">
+                <br/>
+                <h6>Badge Count {{goodJobCount}}</h6>
+                 <div>
+                    <button type="submit" (click)="clickRewardBadge(selectedValue.value,goodJobCount,'Good Job')" class="btn btn-primary">Reward Badge</button>
+                    <div style="width:6px;height:auto;display:inline-block;"></div>
+                   
+                </div>
+             </div>
+    </div>
+
+  </ba-card>
+
+    </div>
+    
+   <div class="col-sm-4"  align="center">
+  <ba-card title="Creativity" baCardClass="with-scroll" >    
+         <div class="thumbnail">
+        <img src="assets/img/app/badges/creativity.png" alt="Lights"  style="width:60%">
+        <div class="caption">
+                <br/>
+                <h6>Badge Count {{creativityCount}}
+                    
+                </h6>
+                 <div>
+                    <button type="submit"(click)="clickRewardBadge(selectedValue.value,creativityCount,'Creativity')" class="btn btn-primary">Reward Badge</button>
+                    <div style="width:6px;height:auto;display:inline-block;"></div>
+              
+                </div>
+             </div>
+    </div> 
+
+      </ba-card>
+
+    </div>
+
+  </div>
+

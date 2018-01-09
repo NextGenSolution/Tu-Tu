@@ -1,0 +1,32 @@
+<form>
+	<div *ngFor="let r of result">
+
+		<div class="form-group">
+			<label for="currentPwd">Enter Current Password</label>
+			<input #currentPwd type="password" class="form-control" id="currentPwd" (keyup)="onKeyCurPwd(currentPwd.value)" style="width:350px">
+		</div>
+<div *ngIf=validateCurrentPwd>
+ <p style="color:black">Invalid Current Password...</p>
+ <br/>
+</div>
+
+		<div class="form-group">
+			<label for="NewPwd">New Password</label>
+			<input #pwd type="password" class="form-control" id="NewPwd" (keyup)="onKeyPwd(pwd.value)" style="width:350px">
+		</div>
+
+		<div class="form-group">
+			<label for="confirmNewPwd">Confirm Password</label>
+			<input #confirmPwd type="password" class="form-control" id="confirmNewPwd" (keyup)="onKeyMatchPwds(confirmPwd.value,pwd.value)" style="width:350px">
+		</div>
+
+		<div *ngIf=validatePwd>
+ <p style="color:black">Passwords does not match...</p>
+ <br/>
+</div>
+
+		<div align="right">
+			<button type="submit" (click)="clickEdit(currentPwd.value,pwd.value,confirmPwd.value)" [disabled]="validateCurrentPwd || validatePwd" class="btn btn-primary">Edit</button>
+		</div>
+	</div>
+</form>

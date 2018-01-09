@@ -1,0 +1,165 @@
+<div class="container">
+<div class="row pie-charts">
+
+  <ba-card *ngFor="let chart of charts;let i = index" class="pie-chart-item-container col-xlg-3 col-lg-3 col-md-6 col-sm-12 col-xs-12">
+
+ <img *ngIf="i==3" src="https://cdn4.iconfinder.com/data/icons/chart-types/512/bar_diagram-512.png" style="width:90px;" />
+      <img *ngIf="i==2" src="https://cdn4.iconfinder.com/data/icons/time-date-management/512/calendar_completed-512.png" style="width:90px" />
+      <img *ngIf="i==0" src="https://cdn4.iconfinder.com/data/icons/symbol-duo-common-1/32/paste-star-512.png" style="width:90px;opacity:0.7" />
+      <img *ngIf="i==1" src="http://www.nuance.co.uk/assets/images/multimedia/icon_services_black.png" style="width:90px;opacity:0.9" />
+<br><br>
+    <div class="pie-chart-item">
+      <div class="chart" [attr.data-rel]="chart.color">
+        <span class="percent"></span>
+      </div>
+      <div class="description">
+        <div>{{ chart.description }} : {{taskCount[i]}}</div>
+        <div class="description-stats"> </div>
+      </div>
+    </div>
+           
+  </ba-card>
+</div>
+
+<div>
+  <!-- Trigger the modal with a button -->
+
+<button (click)="showHistory()" class="btn btn-primary" style="color:black" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Activity log</button>
+<div class="modal fade" id="myModal" data-backdrop="false">
+    <div class="modal-dialog">
+        <div class="modal-content" style="overflow-y:scroll; height:400px;padding:10px">
+            <div class="modal-header" style="color:black">
+              <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" style="text:align:left;cursor:pointer;font-size:20px;" 
+                 data-dismiss="modal"></i></a>
+            </div>
+            <div style="color:black" class="modal-body">View My History</div>
+            <table style="color:black;padding:12px;">
+            <tr class="panel panel-primary">
+                    <td class="panel-heading">Modified Date</td>
+                    <td style="text-align:center" class="panel-heading">Changes</td>
+            </tr>
+            <tr *ngFor="let item of NotificationContainer" >
+                  <td>{{item.modifiedDate}}</td>
+                  <td>{{item.notificationMsg}}</td>
+            </tr>
+            </table>
+            
+        </div>
+    </div>
+</div>
+    <button style="margin-left:15px;color:black;" class="btn btn-success" (click)="saveTodos()">Save</button>
+    <br/><br/>
+</div>
+<div>
+</div>
+
+  <div>
+  </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            TODO
+                <p style="cursor:pointer;text-align:right;margin-left:50px" *ngIf="!onEditing" class="glyphicon glyphicon-eye-open" (click)="show()">ShowMore </p>
+                <p style="cursor:pointer;text-align:right;margin-left:50px" *ngIf="onEditing" class="glyphicon glyphicon-eye-close"  (click)="hide()">Hide</p>
+          </div>
+          <div class="panel-body" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="listBoxers">
+            <ul style="color:black" class="list-group" >
+              <div *ngFor="let item of listBoxers; let i = index">
+              <li style="margin-top:5px" class="list-group-item" dnd-sortable [sortableIndex]="i" [ngClass]="{'overdue':listBoxers[i].remainingDays<3}">
+                {{item.Title}}
+                <div style="font-weight: bold;" *ngIf="listBoxers[i].remainingDays<3">Task is overdue by :{{listBoxers[i].remainingDays}} days</div>
+              <div *ngIf="onEditing" class="alert alert-success">
+                {{item.Description}}
+                <br/>
+                <div *ngIf="listBoxers[i].remainingDays>=3" style="color:red">Due date : {{item.expiryDate}}</div>
+                <div *ngIf="listBoxers[i].remainingDays>=3">
+                    <b>No of days remaining :{{listBoxers[i].remainingDays}}</b>
+                </div>
+                 <b>Assigner : {{item.assigner}}</b>
+              </div>
+                </li>     
+              </div>
+                         
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            Progress
+                <p  style="cursor:pointer;margin-left:50px;" *ngIf="!ProgressEditing" class="glyphicon glyphicon-eye-open" (click)="showProgressDesc()">ShowMore </p>
+                <p style="cursor:pointer;margin-left:50px" *ngIf="ProgressEditing" class="glyphicon glyphicon-eye-close"  (click)="hideProgressDesc()">Hide</p>
+          </div>
+          <div class="panel-body" (onDragEnd)="transferDataSuccess($event)" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="listTeamOne">
+          <div>
+              <ul style="color:black" class="list-group" >
+              <div *ngFor="let item of listTeamOne; let i = index">
+
+              <div class="range range-primary">
+              <input type="range" name="range" min="1" max="100" [(ngModel)]="listTeamOne[i].completeness" 
+              onchange="listTeamOne[i].completeness.value=value">
+              <output>{{listTeamOne[i].completeness}}%</output>
+              </div>
+           
+            
+              <li [ngClass]="{'overdue':listTeamOne[i].remainingDays<3}" class="alert alert-warning" style="list-style:none" 
+               dnd-sortable [sortableIndex]="i">{{item.Title}}
+               <div style="font-weight: bold;" *ngIf="listTeamOne[i].remainingDays<3">Task is overdue by :{{listTeamOne[i].remainingDays}} days</div>
+    
+               <div *ngIf="ProgressEditing" class="alert alert-success">
+                 {{item.Description}}
+                 <div style="color:red">Due date: {{item.expiryDate}}</div>
+                 <b>Assigner : {{item.assigner}}</b>
+                </div>  
+                </li>
+              </div>
+            </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            Done
+          </div>
+          <div class="panel-body" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="listTeamTwo">
+            <ul style="color:black" class="list-group">
+              <li *ngFor="let item of listTeamTwo; let i = index" style="list-style:none" 
+              class="alert alert-success" dnd-sortable [sortableIndex]="i">
+              
+              <div *ngIf="listTeamTwo[i].starCount > 0" style="pointer-events:none;float:left">
+                <rating style="color:#f2b01e" value="2"  [(ngModel)]="listTeamTwo[i].starCount" max="{{_max1}}" stateOn="ion-android-star" stateOff="ion-android-star-outline" class="rating"></rating>
+              </div>
+
+              <span *ngIf="listTeamTwo[i].starCount > 0" class="closeIcon" style="font-size: 20px;margin-left:90px;;cursor:pointer">
+                  <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" (click)="deleteCompletedTask(item.Title)"></i></a> 
+              </span>
+
+              <div style="text-decoration:line-through;color:black;">
+                {{item.Title}}</div>
+              
+              <div *ngIf="listTeamTwo[i].starCount == 0" style="pointer-events:none">
+                  <b> ( Not Rated )</b>
+              </div>
+              
+            </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div> 
+
+
+            <div>
+     
+
+</div>
+</div>
+
+
+  
+  
+

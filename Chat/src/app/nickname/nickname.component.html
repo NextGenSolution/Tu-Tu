@@ -1,0 +1,7 @@
+<h1>Nickname</h1>
+
+
+<p>
+    <input #focus [(ngModel)]="nickname" (keypress)="eventHandler($event)">
+    <button class="btn btn-info" (click)="save()">Save</button>
+</p>

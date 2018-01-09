@@ -1,0 +1,14 @@
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\Tu-Tu.Model.dll.config
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\Tu-Tu.Model.dll
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\Tu-Tu.Model.pdb
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\EntityFramework.dll
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\EntityFramework.SqlServer.dll
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\Microsoft.AspNet.Identity.Core.dll
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\EntityFramework.xml
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\EntityFramework.SqlServer.xml
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\Microsoft.AspNet.Identity.Core.xml
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\bin\Release\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\obj\Release\Tu-Tu.Model.csprojResolveAssemblyReference.cache
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\obj\Release\Tu-Tu.Model.dll
+D:\SLIIT\Added2 MErge\AddedChat\sep-tutu\Web-Api\Tu-Tu\Tu-Tu.Model\obj\Release\Tu-Tu.Model.pdb

@@ -1,0 +1,92 @@
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/akserg/ng2-dnd/master/ng2-dnd.css">
+
+<div class="container">
+<h4>Assign available tasks</h4>
+<input  type="submit" value="Save" class="btn btn-success btn-md" (click)="saveUnassignedTasks()" />
+  <br/><br/>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+          My Tasks
+                <p style="cursor:pointer;text-align:right;margin-left:50px" *ngIf="!onEditing" class="glyphicon glyphicon-eye-open" (click)="show()">ShowMore </p>
+                <p style="cursor:pointer;text-align:right;margin-left:50px" *ngIf="onEditing" class="glyphicon glyphicon-eye-close"  (click)="hide()">Hide</p>
+
+        </div>
+        <div class="panel-body" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="listBoxers">
+          <ul style="color:black" class="list-group" >
+            <div *ngFor="let item of listBoxers; let i = index">
+              <li style="margin-top:5px" style="background-color: #DE6F58;color:white" class="list-group-item" dnd-sortable [sortableIndex]="i" *ngIf="listBoxers[i].remainingDays<3">
+                {{item.Title}}
+              <div style="font-weight: bold;" *ngIf="listBoxers[i].remainingDays<3">Task is overdue by :{{listBoxers[i].remainingDays}} days</div>
+              <div *ngIf="onEditing" class="alert alert-success">
+                {{item.Description}}
+                <br/>
+                <div *ngIf="listBoxers[i].remainingDays>=3" style="color:red">Due date : {{item.expiryDate}}</div>
+                <div *ngIf="listBoxers[i].remainingDays>=3">
+                    <b>No of days remaining :{{listBoxers[i].remainingDays}}</b>
+                </div>
+                 <b>Assigner : {{item.assigner}}</b>
+              </div>
+                </li>
+                
+                <li style="margin-top:5px;background-color:#5cb85c;color:white"  class="list-group-item" dnd-sortable [sortableIndex]="i" *ngIf="listBoxers[i].remainingDays>=3">
+                {{item.Title}}
+              <div style="font-weight: bold;" *ngIf="listBoxers[i].remainingDays<3">Task is overdue by :{{listBoxers[i].remainingDays}} days</div>
+              <div *ngIf="onEditing" class="alert alert-success">
+                {{item.Description}}
+                <br/>
+                <div *ngIf="listBoxers[i].remainingDays>=3" style="color:red">Due date : {{item.expiryDate}}</div>
+                <div *ngIf="listBoxers[i].remainingDays>=3">
+                    <b>No of days remaining :{{listBoxers[i].remainingDays}}</b>
+                </div>
+                 <b>Assigner : {{item.assigner}}</b>
+              </div>
+                </li>     
+              </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-success">
+          <div class="panel-heading">
+            Available Tasks
+                <p  style="cursor:pointer;margin-left:50px;" *ngIf="!ProgressEditing" class="glyphicon glyphicon-eye-open" (click)="showProgressDesc()">ShowMore </p>
+                <p style="cursor:pointer;margin-left:50px" *ngIf="ProgressEditing" class="glyphicon glyphicon-eye-close"  (click)="hideProgressDesc()">Hide</p>
+          </div>
+          <div class="panel-body" (onDragEnd)="transferDataSuccess($event)" dnd-sortable-container [dropZones]="['boxers-zone']" [sortableData]="listTeamOne">
+          <div>
+              <ul style="color:black" class="list-group" >
+              <div *ngFor="let item of listTeamOne; let i = index">
+            
+              <li [ngClass]="{'overdue':listTeamOne[i].remainingDays<3}" class="alert alert-warning" style="list-style:none" 
+               dnd-sortable [sortableIndex]="i">{{item.Title}}
+               <div style="font-weight: bold;" *ngIf="listTeamOne[i].remainingDays<3">Task is overdue by :{{listTeamOne[i].remainingDays}} days</div>
+    
+               <div *ngIf="ProgressEditing" class="alert alert-success">
+                 {{item.Description}}
+                 <div style="color:red">Due date: {{item.expiryDate}}</div>
+                 <b>Assigner : {{item.assigner}}</b>
+                </div>  
+
+                </li>
+              </div>
+            </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+      <ba-card title="simple performance review" baCardClass="with-scroll" >
+        <h5>Rated for last projects</h5>
+        <ba-chartist-chart baChartistChartClass="ct-chart"
+                           baChartistChartType="Line"
+                           [baChartistChartData]="data['simpleLineData']"
+                           [baChartistChartOptions]="data['simpleLineOptions']">
+        </ba-chartist-chart>
+      </ba-card>
+    </div>
+  </div>
+</div>
